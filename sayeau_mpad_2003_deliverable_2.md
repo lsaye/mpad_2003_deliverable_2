@@ -1,4 +1,4 @@
-**November 3, 2026**<br>
+**November 4, 2026**<br>
 **MPAD2003A Introductory Data Storytelling**<br>
 **Lucas Sayeau**<br>
 **Presented to Jean-Sébastien Marier**<br>
