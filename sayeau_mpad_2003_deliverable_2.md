@@ -24,23 +24,12 @@ And to create an unordered list, we simply put a star (`*`) before each item.
 
 ## 1. Getting Data
 
-Use two hashtag symbols (`##`) to create a level 2 heading like this one.
+Dataset: [Beach Water Sampling (City of Ottawa)](https://open.ottawa.ca/documents/beach-water-sampling)
 
-To include a screen capture, use the sample code below. Your images should be saved in the same folder as your `.md` file.
+Google Sheets: [Beach Water Sampling spreadsheet](https://docs.google.com/spreadsheets/d/1YXj0S1sWDgQpiIxDm3s21EvZv7pSl85NETxXagml57A/edit?usp=sharing)
 
-![](import-screen-capture.png)<br>
-*Figure 1: The "Import file" prompt on Google Sheets.*
-
-**Here are examples of functions and lines of code put in grey boxes:**
-
-1. If you name a function, put it between "angled" quotation marks like this: `IMPORTHTML`.
-1. If you want to include the entire line of code, do the same thing, albeit with your entire code: `=IMPORTHTML("https://en.wikipedia.org/wiki/China"; "table", 5)`.
-1. Alternatively, you can put your code in an independent box using the template below:
-
-``` r
-=IMPORTHTML("https://en.wikipedia.org/wiki/China"; "table", 5)
-```
-This also shows how to create an ordered list. Simply put `1.` before each item.
+![](beach-data-import.png)<br>
+*Figure 1: The Beach Water Sampling dataset in Google Sheets just after importation.*
 
 ## 2. Understanding Data
 
