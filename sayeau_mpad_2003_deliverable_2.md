@@ -28,8 +28,26 @@ Dataset: [Beach Water Sampling (City of Ottawa)](https://open.ottawa.ca/document
 
 Google Sheets: [Beach Water Sampling spreadsheet](https://docs.google.com/spreadsheets/d/1YXj0S1sWDgQpiIxDm3s21EvZv7pSl85NETxXagml57A/edit?usp=sharing)
 
+This is a City of Ottawa dataset from Ottawa Public Health about E. coli testing at 5 beaches, which I'll be using for my story on the switch from daily to weekly testing. I downloaded the .xlsx from Open Ottawa and imported it with file, import, upload, replace spreadsheet.
+
 ![](beach-data-import.png)<br>
 *Figure 1: The Beach Water Sampling dataset in Google Sheets just after importation.*
+
+### Size:
+
+This dataset has 3714 rows of data and 4 columns (Date, Beach, GM E. coli, Status), and it runs from June 20, 2014 to August 25, 2026. Row 1 is empty, and the headings are in row 2. The data is not fully clean, as the GM E. coli column has 93 empty cells, plus "Not Open" or "-" typed in 26 times. The status column also spells the same thing in multiple different ways ("Swim", "swim", " Swim").
+
+### Date column:
+
+This column holds dates. There are 290 to 360 rows per year from 2014 to 2024, then only 70 in 2025 and 75 in 2026, due to the fact that Ottawa Public Health switched from daily to weekly testing.
+
+### Beach and GM E. coli columns:
+
+The "Beach" variable is nominal and names 5 different beaches (Britannia, Mooney's Bay, Westboro, Petrie River, Petrie East Bay), with "Westboro" not having any data during 2022 to 2024. GM E. coli is a continuous variable on a ratio scale, measured in E. coli per 100 mL (Statistics Canada, 2021). Its values run from 9 to 1000, with a median of 45, and 472 results are 200 or higher, which fails the provincial standard.
+
+### My question:
+
+How many unsafe days would weekly testing have missed during the years when testing was daily?
 
 ## 2. Understanding Data
 
@@ -69,7 +87,7 @@ Insert text here.
 
 ## 4. References
 
-Include a list of your references here. Please follow [APA](https://apastyle.apa.org/style-grammar-guidelines/references) or [MLA](https://www.mla.org/MLA-Style) guidelines for references. Hanging paragraphs aren't required though.
+Statistics Canada. (2021). *Statistics: Power from data!* [https://www150.statcan.gc.ca/n1/edu/power-pouvoir/toc-tdm/5214718-eng.htm](https://www150.statcan.gc.ca/n1/edu/power-pouvoir/toc-tdm/5214718-eng.htm)
 
 **Here's an example:**
 
