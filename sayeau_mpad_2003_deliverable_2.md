@@ -53,15 +53,21 @@ How many unsafe days would weekly testing have missed during the years when test
 
 ### 2.1. VIMO Analysis
 
-Use three hashtag symbols (`###`) to create a level 3 heading like this one. Please follow this template when it comes to level 1 and level 2 headings. However, you can use level 3 headings as you see fit.
+**Valid**
 
-Insert text here.
+All 3,714 dates are valid, 3,595 of the GM E. coli cells hold proper numbers, and all 5 beach names are correct.
 
-Support your claims by citing relevant sources. Please follow [APA guidelines for in-text citations](https://apastyle.apa.org/style-grammar-guidelines/citations).
+**Invalid**
 
-**For example:**
+The GM E. coli column has text typed into a number column: "Not Open" 12 times (2017, at Petrie East Bay and Petrie River) and "-" 14 times (2025–2026). The Status column uses 22 different spellings for about 6 categories, like "Swim", "swim" and " Swim". 108 Status values and 6 Beach names have extra spaces.
 
-As seen in Bounegru & Gray (2011), a data visualization should be clear...
+**Missing**
+
+GM E. coli has 93 empty cells: Britannia's entire 2020 season (65), plus Petrie East Bay (14) and Petrie River (14) in 2019. Status has 14 empty cells. Westboro has no rows at all for 2022 to 2024.
+
+**Outliers**
+
+The GM E. coli median is 45 and the mean is 104.2. 14 values are exactly 1,000, which is likely a cap on the lab's measurement and not a real count, for example Petrie River on July 15, 2016.
 
 ### 2.2. Cleaning Data
 
