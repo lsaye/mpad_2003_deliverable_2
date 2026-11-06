@@ -1,26 +1,9 @@
-**November 4, 2026**<br>
+**November 5, 2026**<br>
 **MPAD2003A Introductory Data Storytelling**<br>
 **Lucas Sayeau**<br>
 **Presented to Jean-Sébastien Marier**<br>
 
 # Deliverable 2: Exploratory Data Analysis (EDA)
-
-Use one hashtag symbol (`#`) to create a level 1 heading like this one.
-
-## Foreword
-
-For this assignment, you must clean and analyze the dataset from Deliverable 1, create exploratory charts/visualizations, and identify a potential story. Your assignment must clearly detail your process. You are expected to write about 1,000-1,200 words, and to include several screen captures showing the different steps you went through. Your assignment must be written with the Markdown format and submitted on GitHub.
-
-I have been assigning different versions of this project to my digital journalism and data storytelling students for a few years now. Its structure was inspired by the main sections/chapters of [*The Data Journalism Handbook*](https://datajournalism.com/read/handbook/one/). This version was further inspired by the [Key Capabilities in Data Science](https://extendedlearning.ubc.ca/programs/key-capabilities-data-science) program offered by the University of British Columbia (UBC).
-
-**Here are some useful resources for this assignment:**
-
-* [GitHub's *Basic writing and formatting syntax* page](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-* [The template repository for this assignment in case you delete something by mistake](https://github.com/jsmarier/jou4100_jou4500_mpad2003_project2_template)
-
-Did you notice how to create a hyperlink? In Markdown, we put the clickable text between square brackets and the actual URL between parentheses.
-
-And to create an unordered list, we simply put a star (`*`) before each item.
 
 ## 1. Getting Data
 
@@ -63,38 +46,78 @@ The GM E. coli column has text typed into a number column: "Not Open" 12 times (
 
 **Missing**
 
-GM E. coli has 93 empty cells: Britannia's entire 2020 season (65), plus Petrie East Bay (14) and Petrie River (14) in 2019. Status has 14 empty cells. Westboro has no rows at all for 2022 to 2024.
+GM E. coli has 93 empty cells: Britannia's entire 2020 season (65), plus Petrie East Bay (14) and Petrie River (14) in 2019. Status has 14 empty cells, and Westboro has no rows at all for 2022 to 2024.
 
 **Outliers**
 
-The GM E. coli median is 45 and the mean is 104.2. 14 values are exactly 1,000, which is likely a cap on the lab's measurement and not a real count, for example Petrie River on July 15, 2016.
+The GM E. coli median is 45 and the mean is 104.2. 14 values are exactly 1,000, which is probably a cap on the lab's measurement and not a real count, for example Petrie River on July 15, 2016.
 
 ### 2.2. Cleaning Data
 
-Insert text here.
+**Method 1: Deleting the empty row and freezing the headings**
+
+I deleted the empty row 1 so the headings sit in row 1, then froze that row with View, Freeze, 1 row so the headings stay visible while scrolling.
+
+**Method 2: Trimming whitespace**
+
+I selected the Beach and Status columns and used Data, Data cleanup, Trim whitespace. This fixed 108 Status values and 6 Beach names with extra spaces, so Beach went back to exactly 5 names and Status went from 22 spellings to 11.
+
+**Method 3: Find and replace**
+
+I used Edit, Find and replace with "Match case" ticked to fix capitalization: "swim" became "Swim" (302 cells), "Swimming Not Recommended" became "Swimming not recommended" (2 cells), and "(rainfall)" became "(Rainfall)" (48 cells). Status went from 11 spellings down to 8.
+
+![](beach-data-clean.png)<br>
+*Figure 2: The Beach Water Sampling dataset after cleaning.*
 
 ### 2.3. Analyzing Data
 
-Insert text here.
+**Pivot table**
 
-**This section should include a screen capture of your pivot table, like so:**
+I made a pivot table with Beach as rows, COUNTA of Date to count the records per beach, and AVERAGE of GM E. coli. I chose these variables to compare water quality between the 5 beaches.
 
-![](pivot-table-screen-capture.png)<br>
-*Figure 2: This pivot table shows...*
+![](pivot-table.png)<br>
+*Figure 3: Pivot table showing the number of records and average E. coli level per beach.*
 
-**This section should also include a screen capture of your exploratory chart, like so:**
+Petrie East Bay has the highest average at 145.0 E. coli per 100 mL, more than double Britannia's 65.9. The others fall in between: Westboro 109.8, Petrie River 104.0, Mooney's Bay 95.7. Every beach has 786 records except Westboro with 570, because of its missing 2022–2024 seasons.
 
-![](chart-screen-capture.png)<br>
-*Figure 3: This exploratory chart shows...*
+**Exploratory chart**
+
+I made a column chart from the pivot table because column length makes the gap between beaches easy to compare.
+
+![](exploratory-chart.png)<br>
+*Figure 4: Average E. coli level per beach, 2014–2026.*
+
+**Failing results**
+
+I counted failing results (200 or higher) per beach with COUNTIFS:
+
+    =COUNTIFS(B:B, "Petrie East Bay", C:C, ">=200")
+
+Petrie East Bay failed 170 times, about 22% of its tests, while Britannia failed 47 times (6.5%). Mooney's Bay failed 94 times, Petrie River 91 and Westboro 70, all around 12%. 472 results failed in total.
+
+**Potential story**
+
+The story is how many of these failures weekly testing would miss, especially at Petrie East Bay, the beach that fails most often. The next step is to compare daily and weekly results from the years when testing was daily.
 
 ## 3. Delivering Data
 
-Insert text here.
+To tell this story, I would need to re-run the daily results from 2014–2024 as if they were tested weekly, to count how many failing days a weekly schedule would have missed. I would also need rainfall data, since many of the "Swimming not recommended (Rainfall)" results line up with storms.
+
+I could interview Matthew Ruf at Ottawa Public Health about why testing went weekly, and Richard Kibbee at Carleton University about what weekly testing can miss. A regular swimmer at Petrie Island would also add a citizen's view.
+
+These sources provide strong context:
+
+* [CTV News Ottawa (May 20, 2025): Water at Ottawa's 4 public beaches will not be tested daily this summer](https://www.ctvnews.ca/ottawa/article/water-at-ottawas-4-public-beaches-will-not-be-tested-daily-this-summer/)
+* [Ottawa Riverkeeper (September 2025): Water quality analysis of OPH beaches](https://ottawariverkeeper.ca/wp-content/uploads/2025/09/OttawaRiverkeeper_WQAnalysis_OPHBeaches_Sept2025.pdf)
+
+CTV reported the switch to weekly testing, and Riverkeeper analyzed 2014–2024 OPH data to show what weekly testing would miss.
 
 ## 4. References
 
+Ottawa Riverkeeper. (2025). *Water quality analysis of Ottawa Public Health beaches*. [https://ottawariverkeeper.ca/wp-content/uploads/2025/09/OttawaRiverkeeper_WQAnalysis_OPHBeaches_Sept2025.pdf](https://ottawariverkeeper.ca/wp-content/uploads/2025/09/OttawaRiverkeeper_WQAnalysis_OPHBeaches_Sept2025.pdf)
+
+Pringle, J. (2025, May 20). Water at Ottawa's 4 public beaches will not be tested daily this summer. *CTV News Ottawa*. [https://www.ctvnews.ca/ottawa/article/water-at-ottawas-4-public-beaches-will-not-be-tested-daily-this-summer/](https://www.ctvnews.ca/ottawa/article/water-at-ottawas-4-public-beaches-will-not-be-tested-daily-this-summer/)
+
 Statistics Canada. (2021). *Statistics: Power from data!* [https://www150.statcan.gc.ca/n1/edu/power-pouvoir/toc-tdm/5214718-eng.htm](https://www150.statcan.gc.ca/n1/edu/power-pouvoir/toc-tdm/5214718-eng.htm)
 
-**Here's an example:**
-
-Bounegru, L., & Gray, J. (Eds.). (2021). *The Data Journalism Handbook 2: Towards A Critical Data Practice*. Amsterdam University Press. [https://ocul-crl.primo.exlibrisgroup.com/permalink/01OCUL_CRL/hgdufh/alma991022890087305153](https://ocul-crl.primo.exlibrisgroup.com/permalink/01OCUL_CRL/hgdufh/alma991022890087305153)
+**AI disclosure:** Only used "Claude" once to figure out the steps on how to create charts through the Google sheets interface itself.
